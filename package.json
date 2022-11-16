@@ -70,24 +70,11 @@
     "typescript": "^4.0.5"
   },
   "scripts": {
-    "prepare": "node ./.setup.js && hardhat typechain",
-    "lint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
-    "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",
+    "prepare": "hardhat typechain",
+    "lint": "eslint \"**/*.{js,ts}\"",
+    "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
     "format": "prettier --check \"**/*.{ts,js,sol}\"",
     "format:fix": "prettier --write \"**/*.{ts,js,sol}\"",
-    "compile": "hardhat compile",
-    "void:deploy": "hardhat deploy",
-    "test": "cross-env HARDHAT_DEPLOY_FIXTURE=true HARDHAT_COMPILE=true mocha --bail --recursive test",
-    "gas": "cross-env REPORT_GAS=true hardhat test",
-    "coverage": "cross-env HARDHAT_DEPLOY_FIXTURE=true hardhat coverage",
-    "dev": "hardhat node --watch --export contractsInfo.json",
-    "local:dev": "hardhat --network localhost deploy --watch",
-    "execute": "node ./scripts.js run",
-    "deploy": "node ./scripts.js deploy",
-    "export": "node ./scripts.js export",
-    "fork:execute": "node ./scripts.js fork:run",
-    "fork:deploy": "node ./scripts.js fork:deploy",
-    "fork:dev": "node ./scripts.js fork:dev",
-    "fork:test": "node ./scripts.js fork:test"
+    "compile": "hardhat compile"
   }
 }
