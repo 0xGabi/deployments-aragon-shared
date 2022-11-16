@@ -16,7 +16,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const aragonID = await get('FIFSResolvingRegistrar');
   log('Reusing AragonID deployment:', aragonID.address);
 
-  const baseTemplate = await deploy('BaseTemplate', {
+  await deploy('BaseTemplate', {
     from: deployer,
     args: [
       daoFactory.address,
@@ -27,18 +27,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
     deterministicDeployment: true,
   });
-
-  if (process.env.VERIFY) {
-    await hre.tenderly.persistArtifacts({
-      name: 'BaseTemplate',
-      address: baseTemplate.address,
-    });
-
-    await hre.tenderly.verify({
-      name: 'BaseTemplate',
-      address: baseTemplate.address,
-    });
-  }
 };
 
 export default func;

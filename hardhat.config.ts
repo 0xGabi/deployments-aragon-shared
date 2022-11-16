@@ -5,6 +5,7 @@ import '@nomiclabs/hardhat-ethers';
 import '@tenderly/hardhat-tenderly';
 import '@typechain/hardhat';
 import 'hardhat-deploy';
+import 'hardhat-deploy-tenderly';
 import 'hardhat-gas-reporter';
 import 'solidity-coverage';
 
@@ -123,6 +124,9 @@ const config: HardhatUserConfig = {
           },
         ],
         deployments: {
+          goerli: [
+            'node_modules/@1hive/deployments-aragon-os/deployments/goerli',
+          ],
           polygon: [
             'node_modules/@1hive/deployments-aragon-os/deployments/polygon',
           ],
