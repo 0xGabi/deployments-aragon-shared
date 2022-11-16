@@ -5,6 +5,7 @@ import '@nomiclabs/hardhat-ethers';
 import '@tenderly/hardhat-tenderly';
 import '@typechain/hardhat';
 import 'hardhat-deploy';
+import 'hardhat-deploy-tenderly';
 import 'hardhat-gas-reporter';
 import 'solidity-coverage';
 
@@ -70,13 +71,27 @@ const config: HardhatUserConfig = {
       url: node_url('goerli'),
       accounts: accounts('goerli'),
     },
+    xdai: {
+      url: node_url('xdai'),
+      accounts: accounts('xdai'),
+    },
     polygon: {
       url: node_url('polygon'),
       accounts: accounts('polygon'),
     },
+    mumbai: {
+      url: node_url('mumbai'),
+      accounts: accounts('mumbai'),
+    },
+    arbtest: {
+      url: node_url('arbtest'),
+      accounts: accounts('arbtest'),
+    },
     frame: {
       url: 'http://localhost:1248',
       httpHeaders: {origin: 'hardhat'},
+      timeout: 0,
+      gas: 0,
     },
   },
   gasReporter: {
@@ -105,13 +120,21 @@ const config: HardhatUserConfig = {
     : {
         contracts: [
           {
-            artifacts:
-              'node_modules/@aragon/apps-shared-minime/build/contracts',
+            artifacts: 'node_modules/@1hive/minime/artifacts',
           },
         ],
         deployments: {
+          goerli: [
+            'node_modules/@1hive/deployments-aragon-os/deployments/goerli',
+          ],
           polygon: [
             'node_modules/@1hive/deployments-aragon-os/deployments/polygon',
+          ],
+          mumbai: [
+            'node_modules/@1hive/deployments-aragon-os/deployments/mumbai',
+          ],
+          arbtest: [
+            'node_modules/@1hive/deployments-aragon-os/deployments/arbtest',
           ],
         },
       },
