@@ -1,7 +1,5 @@
 cache/
 artifacts/
-
-coverage*
 typechain/
 
 .vscode/*
